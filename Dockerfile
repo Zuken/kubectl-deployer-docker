@@ -2,7 +2,7 @@ FROM alpine:3.6
 
 LABEL MAINTAINER="Sergii Nuzhdin <ipaq.lw@gmail.com@gmail.com>"
 
-ENV KUBE_LATEST_VERSION="v1.16.0"
+ENV KUBE_LATEST_VERSION="v1.17.0"
 
 RUN apk add --update ca-certificates \
     && apk add --update -t deps curl \
@@ -11,3 +11,4 @@ RUN apk add --update ca-certificates \
     && chmod +x /usr/local/bin/kubectl \
     && apk del --purge deps \
     && rm /var/cache/apk/*
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
